@@ -1,13 +1,17 @@
-//
-// Created by Daniel on 26.11.2025.
-//
-
 #ifndef Z80___CPU_HALFADDER_H
 #define Z80___CPU_HALFADDER_H
 
-
 class HalfAdder {
+public:
+    HalfAdder() : sum(0), carry(0) {};
+    void add(unsigned int Input1, unsigned int Input2);
+
+    unsigned int getOutputSUM();
+    unsigned int getOutputCARRY();
+
+private:
+    unsigned int sum;
+    unsigned int carry;
 };
 
-
-#endif //Z80___CPU_HALFADDER_H
+#endif
