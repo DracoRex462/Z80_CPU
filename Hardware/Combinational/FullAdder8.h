@@ -11,8 +11,8 @@ public:
     unsigned int getSumADDR();
 
 private:
-    std::vector<unsigned int> SVector;
-    std::vector<unsigned int> CVector;
+    std::vector<unsigned int> SVector [8];
+    std::vector<unsigned int> CVector [8];
 };
 
 #endif

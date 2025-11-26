@@ -3,9 +3,6 @@
 
 void FullSuptractor8::sub(uint8_t input1, uint8_t input2)
 {
-    SVector.resize(8);
-    CVector.resize(8);
-
     Subtractor Sub;
     unsigned int borrow = 0;
 

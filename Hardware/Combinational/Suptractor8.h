@@ -11,8 +11,8 @@ public:
     unsigned int getSumSUP();
 
 private:
-    std::vector<uint8_t> SVector;
-    std::vector<uint8_t> CVector;
+    std::vector<unsigned int> SVector [8];
+    std::vector<unsigned int> CVector [8];
 };
 
 #endif

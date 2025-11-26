@@ -4,9 +4,6 @@
 
 void FullAddr8::add(uint8_t input1, uint8_t input2)
 {
-    SVector.resize(8);
-    CVector.resize(8);
-
     FullAdder adder;
     unsigned int carry = 0u;
 
