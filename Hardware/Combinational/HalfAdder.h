@@ -1,5 +1,5 @@
-#ifndef Z80___CPU_HALFADDER_H
-#define Z80___CPU_HALFADDER_H
+#ifndef HALFADDER_H
+#define HALFADDER_H
 
 class HalfAdder {
 public:
