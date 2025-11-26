@@ -1,12 +1,13 @@
 #ifndef FULLADDER_H
 #define FULLADDER_H
 
+#include <cstdint>
 #include <vector>
 
 class FullAdder8 {
 public:
     FullAdder8() {};
-    void add(unsigned int input8_1, unsigned int input8_2);
+    void add(uint8_t input1, uint8_t input2);
     unsigned int getSumADDR();
 
 private:

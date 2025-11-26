@@ -1,7 +1,8 @@
 #include "FullAdder8.h"
 #include <vector>
+#include <cstdint>
 
-void FullAddr8::add(unsigned int input16_1, unsigned int input16_2)
+void FullAddr8::add(uint8_t input1, uint8_t input2)
 {
     SVector.resize(8);
     CVector.resize(8);
@@ -11,8 +12,8 @@ void FullAddr8::add(unsigned int input16_1, unsigned int input16_2)
 
     for (int i = 0; i < 8; ++i)
     {
-        unsigned int bitA = (input8_1 >> i) & 1u;
-        unsigned int bitB = (input8_2 >> i) & 1u;
+        unsigned int bitA = (input1 >> i) & 1u;
+        unsigned int bitB = (input2 >> i) & 1u;
 
         adder.add(carry, bitA, bitB);
 
