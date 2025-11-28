@@ -1,7 +1,8 @@
-#ifndef Z80___CPU_Z80_H
-#define Z80___CPU_Z80_H
+#ifndef CPU_Z80_H
+#define CPU_Z80_H
 
 #include <vector>
+#include "ControlUnit.h"
 
 class Z80 {
 public:
