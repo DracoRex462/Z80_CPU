@@ -3,6 +3,10 @@
 
 
 class ControlUnit {
+public:
+    ControlUnit();
+
+private:
 };
 
 #endif
