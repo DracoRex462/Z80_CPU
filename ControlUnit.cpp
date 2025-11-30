@@ -7,8 +7,8 @@ void ControlUnit::decode_and_execute()
 
     for (i = 0; i < IR.size(), i++)
     {
-        unsigned int y-Field = (IR[i] & 0b11110000) >> 4
-        unsigned int x-Field = (IR[i] & 0b00001111)
-        alu.execute(x-Field, y-Field);
+        unsigned int yField = (IR[i] & 0b11110000) >> 4
+        unsigned int xField = (IR[i] & 0b00001111)
+        alu.execute(xField, yField);
     }
 }

@@ -1,13 +1,17 @@
-//
-// Created by Daniel on 26.11.2025.
-//
-
-#ifndef Z80___CPU_ALU_H
-#define Z80___CPU_ALU_H
+#ifndef ALU_H
+#define ALU_H
 
 
-class ALU {
+class ALU
+{
+public:
+    ALU();
+    void execute(unsigned int xField, unsigned int yField);
+
+
+private:
+
 };
 
 
-#endif //Z80___CPU_ALU_H
+#endif
