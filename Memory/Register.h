@@ -8,7 +8,7 @@ class Register
 {
 public:
     void write(unsigned int addr, unsigned int value) { R[addr].push_back(value); };
-    std::vector<uint8_t>& read(unsigned int addr) { return R[addr]; }
+    uint8_t read(unsigned int addr) { return R[addr][0]; }
 
 private:
     std::vector<uint8_t> R[7];
