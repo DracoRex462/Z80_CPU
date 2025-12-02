@@ -10,14 +10,18 @@ void ALU::execute(unsigned int xField, unsigned int yField)
     switch(xField)
     {
         case 0x9: //SUP
-            break;
+            loadA(executeSUP(yField));
         case 0x8: //ADD
-            break;
+            loadA(executeADD(yField));
         case 0x7: //LD
             break;
     }
-
 }
+void ALU::loadA(unsigned int value)
+{
+    Register R;
+    R.write(0, value);
+};
 
 unsigned int ALU::executeADD(unsigned int yField)
 {
