@@ -16,7 +16,7 @@ void ControlUnit::decode_and_execute()
         if (yField == 6) { HL = createHL((IR[i + 1] & 0b11110000) >> 4, IR[i + 1] & 0b00001111); )}
         else { HL = 0x0000; }
 
-        alu.execute(xField, yField);
+        alu.execute(xField, yField, HL);
     }
 }
 
