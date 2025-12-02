@@ -6,12 +6,12 @@
 
 class ControlUnit {
 public:
-    ControlUnit(const std::vector<unsigned int>& InstructionRegister) : IR(InstructionRegister) {}
+    ControlUnit(const std::vector<uint8_t>& InstructionRegister) : IR(InstructionRegister) {}
     void decode_and_execute();
 
 private:
+    std::vector<uint8_t> IR;
     uint16_t createHL(uint8_t Ci1, uint8_t Ci2);
-    std::vector<unsigned int> IR;
     uint16_t HL;
 };
 

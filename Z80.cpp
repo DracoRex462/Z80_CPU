@@ -12,7 +12,6 @@ void Z80::Run()
     else { throw; }
 }
 
-
 int Z80::ApproveVector()
 {
     for(int pc = 0; pc < IR.size(); ++pc) {

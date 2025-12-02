@@ -6,7 +6,7 @@
 
 class Z80 {
 public:
-    Z80(const std::vector<unsigned int>& InstructionRegister) : IR(InstructionRegister) {}
+    Z80(const std::vector<uint8_t>& InstructionRegister) : IR(InstructionRegister) {}
     void Run();
 
     void PrintRegister();
@@ -14,7 +14,7 @@ public:
 
 private:
     int ApproveVector();
-    std::vector<unsigned int> IR;
+    std::vector<uint8_t> IR;
 };
 
 
