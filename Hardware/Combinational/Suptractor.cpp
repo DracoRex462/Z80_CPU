@@ -1,7 +1,5 @@
-#include "HalfAdder.h"
 #include "Subtractor.h"
 #include "../Logic/OR.h"
-#include <vector>
 
 void FullSubtractor::sub(unsigned int Bin, unsigned int A, unsigned int B) {
     XOR xorGate;

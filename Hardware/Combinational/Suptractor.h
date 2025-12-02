@@ -1,7 +1,6 @@
 #ifndef SUBTRACTOR_H
 #define SUBTRACTOR_H
 
-#include <vector>
 
 class Subtractor {
 public:

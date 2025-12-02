@@ -1,6 +1,6 @@
 #include "HalfAdder.h"
-#include "XOR.h"
-#include "AND.h"
+#include "../Logic/XOR.h"
+#include "../Logic/AND.h"
 
 void HalfAddr::add(unsigned int Input1, unsigned int Input2)
 {
