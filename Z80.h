@@ -7,7 +7,7 @@
 class Z80 {
 public:
     Z80(const std::vector<unsigned int>& InstructionRegister) : IR(InstructionRegister) {}
-    void Run(std::vector<unsigned int> IR);
+    void Run();
 
     void PrintRegister();
     void PrintPCCounter();
