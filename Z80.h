@@ -2,7 +2,7 @@
 #define CPU_Z80_H
 
 #include <vector>
-#include "ControlUnit.h"
+#include "CPU/ControlUnit.h"
 
 class Z80 {
 public:

@@ -13,7 +13,7 @@ void Z80::Run()
 
 int Z80::ApproveVector()
 {
-    for(size_t pc = 0; pc < IR.size(); ++pc) {
+    for(int pc = 0; pc < IR.size(); ++pc) {
         if(IR[pc] == 0x0000) return true;
     }
     return false;

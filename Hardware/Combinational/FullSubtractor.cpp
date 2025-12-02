@@ -1,7 +1,5 @@
-#include "HalfAdder.h"
 #include "Subtractor.h"
 #include "../Logic/OR.h"
-#include <vector>
 
 void FullSubtractor::sub(unsigned int Bin, unsigned int A, unsigned int B) {
     XOR xorGate;
@@ -17,5 +15,5 @@ void FullSubtractor::sub(unsigned int Bin, unsigned int A, unsigned int B) {
     S = orGate.CalcOR(borrow1, borrow2);
 }
 
-unsigned int Subtractor::getC() const { return OutputC; }
-unsigned int Subtractor::getS() const { return OutputS; }
+unsigned int Subtractor::getC() { return OutputC; }
+unsigned int Subtractor::getS() { return OutputS; }
