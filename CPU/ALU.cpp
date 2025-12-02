@@ -15,3 +15,8 @@ void ALU::execute(unsigned int xField, unsigned int yField)
     }
 
 }
+
+
+void ALU::executeADD(unsigned int yField) {}
+void ALU::executeSUP(unsigned int yField) {}
+void ALU::executeLD(unsigned int yField) {}
