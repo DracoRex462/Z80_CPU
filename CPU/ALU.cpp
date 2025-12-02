@@ -1,7 +1,9 @@
 #include "ALU.h"
 #include "../Memory/Register.h"
 #include "../Memory/Memory.h"
-#include "../Hardware/Logic/AND.h"
+
+#include "../Hardware/Combinational/FullAdder8.h"
+#include "../Hardware/Combinational/FullSubtractor8.h"
 
 void ALU::execute(unsigned int xField, unsigned int yField)
 {
@@ -20,12 +22,17 @@ void ALU::execute(unsigned int xField, unsigned int yField)
 unsigned int ALU::executeADD(unsigned int yField)
 {
     Register R;
-    AND And;
-    registerA = R.read(0);
-    return And.CalcAND(registerA, yField);
+    FullAdder8 Adder;
+    Adder.FullSup8(R.read(0), yField);
+    return Adder.getSumADDR();
 }
 
+unsigned int ALU::executeSUP(unsigned int yField)
+{
+    Register R;
+    FullSuptractor8 Subtractor;
+    Subtractor.FullSup8(R.read(0), yField);
+    return Subtractor.getSumSUP();
+}
 
-
-unsigned int ALU::executeSUP(unsigned int yField) {}
 unsigned int ALU::executeLD(unsigned int yField) {}
