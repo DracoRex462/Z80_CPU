@@ -4,7 +4,7 @@
 class PC
 {
 public:
-    PC() : counter(0x1000) {};
+    PC() : counter(0x00) {};
     void setCounter(unsigned int ct) { counter = ct; };
     unsigned int  getCounter() { return counter; }
 
