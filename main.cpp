@@ -11,7 +11,7 @@ int main() {
     memory.write(0x0001, 2);
 
     Z80* CPU = new Z80(IR);
-    CPU.Run();
+    CPU->Run();
 
     Register R;
     std::cout << "Ergebniss: " << R.read(0) << std::endl;

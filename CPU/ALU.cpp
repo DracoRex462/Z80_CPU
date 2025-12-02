@@ -47,7 +47,7 @@ unsigned int ALU::executeADD(unsigned int yField, uint16_t HL)
 unsigned int ALU::executeSUP(unsigned int yField, uint16_t HL)
 {
     Register R;
-    FullSuptractor8 Subtractor;
+    FullSubtractor8 Subtractor;
 
     switch(controlYField(yField))
     {
