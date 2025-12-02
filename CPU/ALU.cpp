@@ -13,7 +13,8 @@ void ALU::execute(unsigned int xField, unsigned int yField, uint16_t HL)
     {
         case 0x9: loadA(executeSUP(yField));  break; //SUP
         case 0x8: loadA(executeADD(yField));  break; //ADD
-        case 0x7: break; //LD
+        case 0x7:
+            break; //LD
     }
 }
 
@@ -38,13 +39,13 @@ unsigned int ALU::executeADD(unsigned int yField, uint16_t HL)
     switch(controlYField(yField))
     {
         case 0: Adder.add(R.read(0), yField); break;
-        case 1: Adder.add(R.read(0), HL); break; // TODO
+        case 1: Adder.add(R.read(0), HL); break;
         case 2: Adder.add(R.read(0), R.read(0)); break;
     }
     return Adder.getSumADDR();
 }
 
-unsigned int ALU::executeSUP(unsigned int yField)
+unsigned int ALU::executeSUP(unsigned int yField, uint16_t HL)
 {
     Register R;
     FullSuptractor8 Subtractor;
@@ -52,7 +53,7 @@ unsigned int ALU::executeSUP(unsigned int yField)
     switch(controlYField(yField))
     {
         case 0: Subtractor.sub(R.read(0), yField); break;
-        case 1: Subtractor.sub(R.read(0), HL); break; // TODO
+        case 1: Subtractor.sub(R.read(0), HL); break;
         case 2: Subtractor.sub(R.read(0), R.read(0)); break;
     }
     return Subtractor.getSumSUP();
