@@ -59,4 +59,9 @@ unsigned int ALU::executeSUP(unsigned int yField, uint16_t HL)
     return Subtractor.getSumSUP();
 }
 
-unsigned int ALU::executeLD(unsigned int yField) {}
+unsigned int ALU::executeLD(unsigned int yField, uint16_t HL)
+{
+    Register R;
+    Memory M;
+    M.write(HL, R.read(yField));
+}

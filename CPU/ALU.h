@@ -14,7 +14,7 @@ private:
     int controlYField(unsigned int yField);
     unsigned int executeADD(unsigned int yField, uint16_t HL);
     unsigned int executeSUP(unsigned int yField, uint16_t HL);
-    unsigned int executeLD(unsigned int yField);
+    unsigned int executeLD(unsigned int yField, uint16_t HL);
 };
 
 #endif
