@@ -6,7 +6,7 @@
 
 class Z80 {
 public:
-    Z80(const std::vector<uint8_t>& InstructionRegister) : IR(InstructionRegister) {}
+    Z80(std::vector<uint8_t>& InstructionRegister) : IR(InstructionRegister) {}
     void Run();
 
     void PrintRegister();

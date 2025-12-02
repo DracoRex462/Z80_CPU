@@ -1,5 +1,5 @@
-#include "FullSuptractor8.h"
-#include "Subtractor.h" 
+#include "FullSubtractor8.h"
+#include "FullSubtractor.h"
 
 void FullSuptractor8::sub(uint8_t input1, uint8_t input2)
 {
