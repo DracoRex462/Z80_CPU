@@ -1,5 +1,7 @@
 #include "Z80.h"
 #include "CPU/ControlUnit.h"
+#include "Memory/Register.h"
+#include <iostream>
 
 void Z80::Run()
 {
@@ -19,3 +21,11 @@ int Z80::ApproveVector()
     }
     return false;
 }
+
+
+void PrintRegister()
+{
+    Register R;
+    for (int i = 0; i < R.size(); ++i)
+        std::cout << "Register " << i << ": " << R[i] << std::endl;
+};

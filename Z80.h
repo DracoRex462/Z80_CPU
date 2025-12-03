@@ -8,9 +8,8 @@ class Z80 {
 public:
     Z80(std::vector<uint8_t>& InstructionRegister) : IR(InstructionRegister) {}
     void Run();
-
-    void PrintRegister();
-    void PrintPCCounter();
+    void PrintRegister() {}
+    void PrintPCCounter() {}
 
 private:
     int ApproveVector();
