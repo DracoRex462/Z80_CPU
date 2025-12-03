@@ -12,9 +12,14 @@ int main() {
     Memory memory;
     memory.write(0x0001, 2);
 
-    Z80 CPU(IR);
+    Register R;
+    R.write(0x01, 1);
+    R.write(0x02, 2);
 
-    CPU.Run();
+    Z80 CPU(IR);
+    std::cout << "Anfang Methode\n" << std::endl;
+    CPU.PrintRegister();
+    std::cout << "Ende Methode\n" << std::endl;
  /*
     Register R;
     uint8_t val = R.read(0);

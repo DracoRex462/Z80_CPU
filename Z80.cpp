@@ -12,7 +12,7 @@ void Z80::Run()
         Control->decode_and_execute();
     }
     else { throw; }
-}
+};
 
 int Z80::ApproveVector()
 {
@@ -20,12 +20,12 @@ int Z80::ApproveVector()
         if(IR[pc] == 0x76) return true;
     }
     return false;
-}
+};
 
 
-void PrintRegister()
-{
-    Register R;
-    for (int i = 0; i < R.size(); ++i)
-        std::cout << "Register " << i << ": " << R[i] << std::endl;
+void Z80::PrintRegister() {
+    //Register R;
+    std::cout << "Start" << std::endl;
+    //for (int i = 0; i < 7; ++i)
+    //    std::cout << "Register " << i << ": " << R.read(i) << std::endl;
 };
