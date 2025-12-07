@@ -10,7 +10,7 @@ public:
     void execute(unsigned int xField, unsigned int yField, uint16_t HL);
 
 private:
-    void loadA(unsigned int value);
+    void registerLD(unsigned int value);
     int controlYField(unsigned int yField);
     unsigned int executeADD(unsigned int yField, uint16_t HL);
     unsigned int executeSUP(unsigned int yField, uint16_t HL);

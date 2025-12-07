@@ -1,5 +1,5 @@
 #include "ALU.h"
-#include "PC.h"
+#include "Temp.h"
 #include "../Memory/Register.h"
 #include "../Memory/Memory.h"
 
@@ -11,9 +11,10 @@ void ALU::execute(unsigned int xField, unsigned int yField, uint16_t HL)
 {
     switch(xField)
     {
-        case 0x9: loadA(executeSUP(yField, HL));  break; //SUP
-        case 0x8: loadA(executeADD(yField, HL));  break; //ADD
-        case 0x7: executeLD(yField, HL); break; //LD
+        case 0x4 ... 0x7:           executeLD(yField, HL); break;                  //LD
+        case 0x8:                   registerLD(executeADD(yField, HL), 0);  break; //ADD
+        case 0x9:                   registerLD(executeSUP(yField, HL), 0);  break; //SUP
+
     }
 }
 
@@ -24,10 +25,10 @@ int ALU::controlYField(unsigned int yField)
     return (yField <= 5) ? 0 : (yField == 6 ? 1 : 2);
 }
 
-void ALU::loadA(unsigned int value)
+void ALU::registerLD(unsigned int value, int reg)
 {
     Register R;
-    R.write(0, value);
+    R.write(reg, value);
 };
 
 unsigned int ALU::executeADD(unsigned int yField, uint16_t HL)
