@@ -10,5 +10,4 @@ private:
     unsigned int value;
 };
 
-
 #endif
