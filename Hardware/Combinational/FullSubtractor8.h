@@ -4,9 +4,9 @@
 #include <cstdint>
 #include <vector>
 
-class FullSuptractor8 {
+class FullSubtractor8 {
 public:
-    FullSuptractor8() {};
+    FullSubtractor8() {};
     void sub(uint8_t input1, uint8_t input2);
     unsigned int getSumSUP();
 

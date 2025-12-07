@@ -11,10 +11,9 @@ void ALU::execute(unsigned int xField, unsigned int yField, uint16_t HL)
 {
     switch(xField)
     {
-        case 0x9: loadA(executeSUP(yField));  break; //SUP
-        case 0x8: loadA(executeADD(yField));  break; //ADD
-        case 0x7:
-            break; //LD
+        case 0x9: loadA(executeSUP(yField, HL));  break; //SUP
+        case 0x8: loadA(executeADD(yField, HL));  break; //ADD
+        case 0x7: executeLD(yField, HL); break; //LD
     }
 }
 
@@ -48,7 +47,7 @@ unsigned int ALU::executeADD(unsigned int yField, uint16_t HL)
 unsigned int ALU::executeSUP(unsigned int yField, uint16_t HL)
 {
     Register R;
-    FullSuptractor8 Subtractor;
+    FullSubtractor8 Subtractor;
 
     switch(controlYField(yField))
     {
