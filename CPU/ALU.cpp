@@ -18,8 +18,6 @@ void ALU::execute(unsigned int xField, unsigned int yField, uint16_t HL)
     }
 }
 
-
-
 int ALU::controlYField(unsigned int yField)
 {
     return (yField <= 5) ? 0 : (yField == 6 ? 1 : 2);
@@ -59,9 +57,17 @@ unsigned int ALU::executeSUP(unsigned int yField, uint16_t HL)
     return Subtractor.getSumSUP();
 }
 
-unsigned int ALU::executeLD(unsigned int yField, uint16_t HL)
+unsigned int ALU::executeLD(uint8_t command, uint16_t HL)
 {
-    Register R;
-    Memory M;
-    M.write(HL, R.read(yField));
+    switch(command)
+    {
+        case 0x40 ... 0x47: loadHelper();
+    }
+}
+
+unsigned int ALU::loadHelper(uint8_t command)
+{
+    createHL(command);
+    if ()
+
 }
