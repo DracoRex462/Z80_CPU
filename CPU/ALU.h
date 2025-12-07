@@ -11,8 +11,11 @@ public:
 
 private:
     uint16_t HL;
-    unsigned int xField;
-    unsigned int yField;
+    int xField;
+    int yField;
+    int zField;
+
+    void createFields(uint8_t command);
 
     void registerLD(unsigned int value);
     int controlYField(unsigned int yField);

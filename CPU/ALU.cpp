@@ -7,13 +7,14 @@
 #include "../Hardware/Combinational/FullSubtractor8.h"
 
 
-void ALU::execute(unsigned int xField, unsigned int yField, uint16_t HL)
+void ALU::execute(uint8_t command , uint16_t HL)
 {
+    createFields(command);
     switch(xField)
     {
-        case 0x4 ... 0x7:           executeLD(yField, HL); break;                  //LD
-        case 0x8:                   registerLD(executeADD(yField, HL), 0);  break; //ADD
-        case 0x9:                   registerLD(executeSUP(yField, HL), 0);  break; //SUP
+        case 0x4 ... 0x7:  executeLD(yField, HL); break;                  //LD
+        case 0x8:          registerLD(executeADD(yField, HL), 0);  break; //ADD
+        case 0x9:          registerLD(executeSUP(yField, HL), 0);  break; //SUP
 
     }
 }
@@ -28,6 +29,13 @@ void ALU::registerLD(unsigned int value, int reg)
     Register R;
     R.write(reg, value);
 };
+
+void ALU::createFields(uint8_t command)
+{
+    xField = (command >> 6) & 0x03;
+    yField = (command >> 3) & 0x07;
+    zField = command & 0x07;
+}
 
 unsigned int ALU::executeADD(unsigned int yField, uint16_t HL)
 {
@@ -57,17 +65,13 @@ unsigned int ALU::executeSUP(unsigned int yField, uint16_t HL)
     return Subtractor.getSumSUP();
 }
 
-unsigned int ALU::executeLD(uint8_t command, uint16_t HL)
+void ALU::executeLD(uint8_t command, uint16_t HL)
 {
-    switch(command)
-    {
-        case 0x40 ... 0x47: loadHelper();
-    }
-}
+    Register reg;
+    Memory mem;
 
-unsigned int ALU::loadHelper(uint8_t command)
-{
-    createHL(command);
-    if ()
-
+    if (yField != 6 && zField != 6)         { reg.write(reg.read(zField), reg.read(yField)); }  // R <- R
+    else if (yField != 6 && zField == 6)    { reg.write(reg.read(zField), HL); }                // R <- HL
+    else if (yField == 6 && zField != 6)    { mem.write(HL, reg.read(yField));}                 // HL <- R
+    else if (yField == 6 && zField == 6)    { mem.write(HL, HL); }                              // HL <- HL
 }
