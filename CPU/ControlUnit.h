@@ -11,10 +11,8 @@ public:
 
 private:
     std::vector<uint8_t> IR;
-    uint16_t createHL(uint8_t Ci1, uint8_t Ci2);
     void decodeOpcode(uint8_t command);
-
-
+    
     int xField;
     int yField;
     int zField;

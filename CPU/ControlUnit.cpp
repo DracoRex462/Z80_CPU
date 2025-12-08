@@ -20,7 +20,7 @@ void ControlUnit::decode_and_execute()
     }
 }
 
-uint16_t ControlUnit::createHL(uint8_t Ci1, uint8_t Ci2)
+uint16_t ControlUnit::createHL(uint8_t xField, uint8_t yField)
 {
     PC Counter;
     OR Or;
@@ -30,9 +30,10 @@ uint16_t ControlUnit::createHL(uint8_t Ci1, uint8_t Ci2)
 
 //---------------------------------------------------------------------------------------------------------
 
-void ControlUnit::decodeOpcode(uint8_t command)
+void ControlUnit::decodeOpcode(uint8_t command, uint8_t H, uint8_t L)
 {
     xField = (command >> 6) & 0x03;
     yField = (command >> 3) & 0x07;
     zField = command & 0x07;
+    HL = static_cast<uint16_t>(H) << 8 | L;
 }
