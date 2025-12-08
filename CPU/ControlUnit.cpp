@@ -9,10 +9,7 @@ void ControlUnit::decode_and_execute()
     ALU alu;
     for (int i = 0; i < IR.size(); i++)
     {
-        if (yField == 6) { HL = createHL((IR[i + 1] & 0b11110000) >> 4, IR[i + 1] & 0b00001111); }
-        else { HL = 0x0000; }
-
-        alu.execute(xField, yField, HL);
+        alu.execute(op, yField, zField, HL);
     }
 }
 
@@ -22,4 +19,12 @@ void ControlUnit::decodeOpcode(uint8_t command, uint8_t H, uint8_t L)
     yField = (command >> 3) & 0x07;
     zField = command & 0x07;
     HL = static_cast<uint16_t>(H) << 8 | L;
+
+    switch (xField)
+    {
+        case 0x4 ... 0x7:   op = 1;
+        case 0x7:           op = 2;
+        case 0x8:           op = 3;
+    }
+
 }

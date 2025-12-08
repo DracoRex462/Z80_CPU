@@ -1,6 +1,4 @@
 #include "ALU.h"
-#include "../Memory/Register.h"
-#include "../Memory/Memory.h"
 
 #include "../Hardware/Combinational/FullAdder8.h"
 #include "../Hardware/Combinational/FullSubtractor8.h"
@@ -17,17 +15,17 @@ void ALU::execute(unsigned int op, unsigned int yField, unsigned int zField, uin
 
 uint8_t ALU::executeADD(unsigned int zField)
 {
-    Register reg;
     FullAdder8 Adder;
-    Adder.add(reg.read(0), reg.read(zField));
+    Adder.add(reg->read(0), reg->read(zField));
+    temp.setValue(Adder.getSumADDR());
     return Adder.getSumADDR();
 }
 
 uint8_t ALU::executeSUP(unsigned int zField, uint16_t HL)
 {
-    Register reg;
     FullSubtractor8 Sub;
-    Sub.sub(reg.read(0), reg.read(zField));
+    Sub.sub(reg->read(0), reg->read(zField));
+    temp.setValue(Sub.getSumSUB());
     return Sub.getSumSUP();
 }
 
