@@ -12,7 +12,7 @@ public:
 private:
     std::vector<uint8_t> IR;
     void decodeOpcode(uint8_t command);
-    
+
     int xField;
     int yField;
     int zField;
