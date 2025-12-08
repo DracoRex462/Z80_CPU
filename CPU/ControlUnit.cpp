@@ -10,6 +10,7 @@ void ControlUnit::decode_and_execute()
     for (int i = 0; i < IR.size(); i++)
     {
         alu.execute(op, yField, zField, HL);
+        if (op != 1) { executeLDReg(); }
     }
 }
 
@@ -26,5 +27,10 @@ void ControlUnit::decodeOpcode(uint8_t command, uint8_t H, uint8_t L)
         case 0x7:           op = 2;
         case 0x8:           op = 3;
     }
+
+}
+
+void ControlUnit::executeLDReg()
+{
 
 }

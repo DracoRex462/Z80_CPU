@@ -25,7 +25,7 @@ uint8_t ALU::executeSUP(unsigned int zField, uint16_t HL)
 {
     FullSubtractor8 Sub;
     Sub.sub(reg->read(0), reg->read(zField));
-    temp.setValue(Sub.getSumSUB());
+    temp.setValue(Sub.getSumSUP());
     return Sub.getSumSUP();
 }
 
