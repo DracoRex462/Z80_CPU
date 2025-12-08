@@ -7,13 +7,9 @@ class ALU
 {
 public:
     ALU() {};
-    void execute(unsigned int xField, unsigned int yField, uint16_t HL);
+    void execute(int op, uint16_t HL);
 
 private:
-    uint16_t HL;
-
-    //void createFields(uint8_t command);
-
     void registerLD(unsigned int value);
     int controlYField(unsigned int yField);
     unsigned int executeADD(unsigned int yField, uint16_t HL);

@@ -1,5 +1,4 @@
 #include "ALU.h"
-#include "Temp.h"
 #include "../Memory/Register.h"
 #include "../Memory/Memory.h"
 
@@ -8,31 +7,15 @@
 
 // ----------------------------------------------------------------------------------
 
-void ALU::execute(uint8_t command , uint16_t HL)
+void ALU::execute(int op, int yField, int zField, uint16_t HL)
 {
-    createFields(command);
-    switch(xField)
+    switch(op)
     {
-        case 0x4 ... 0x7:  executeLD(yField, HL); break;                  //LD
-        case 0x8:          registerLD(executeADD(yField, HL), 0);  break; //ADD
-        case 0x9:          registerLD(executeSUP(yField, HL), 0);  break; //SUP
+        case 1:          executeLD(yField, HL);     break;      // LD
+        case 2:          executeADD(yField, HL);    break;      // ADD
+        case 3:          executeSUP(yField, HL);    break;      // SUP
     }
 }
-
-// ----------------------------------------------------------------------------------
-/*
-int ALU::controlYField(unsigned int yField)
-{
-    return (yField <= 5) ? 0 : (yField == 6 ? 1 : 2);
-}
-
-void ALU::registerLD(unsigned int value, int reg)
-{
-    Register R;
-    R.write(reg, value);
-};
-*/
-
 
 unsigned int ALU::executeADD(unsigned int yField, uint16_t HL)
 {
@@ -45,7 +28,7 @@ unsigned int ALU::executeADD(unsigned int yField, uint16_t HL)
     return Adder.getSumADDR();
 }
 
-unsigned int ALU::executeSUP(unsigned int zField, uint16_t HL)
+unsigned int ALU::executeSUP(unsigned int yField, uint16_t HL)
 {
     Register reg;
     Memory mem;
@@ -55,16 +38,6 @@ unsigned int ALU::executeSUP(unsigned int zField, uint16_t HL)
     else                { Sub.sub(reg.read(0), reg.read(zField)); }
     return Sub.getSumSUP();
 }
-
-// ----------------------------------------------------------------------------------------------------
-/*
-void ALU::createFields(uint8_t command)
-{
-    xField = (command >> 6) & 0x03;
-    yField = (command >> 3) & 0x07;
-    zField = command & 0x07;
-}
-*/
 
 void ALU::executeLD(int yField, int zField, uint16_t HL)
 {

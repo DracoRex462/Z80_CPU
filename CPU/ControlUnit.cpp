@@ -27,3 +27,13 @@ uint16_t ControlUnit::createHL(uint8_t Ci1, uint8_t Ci2)
     Counter.setCounter(Counter.getCounter() + 2);
     return Ci1 << 8 | Ci2;
 }
+
+
+/*
+void ALU::createFields(uint8_t command)
+{
+    xField = (command >> 6) & 0x03;
+    yField = (command >> 3) & 0x07;
+    zField = command & 0x07;
+}
+*/
