@@ -17,7 +17,7 @@ uint8_t ALU::executeADD(unsigned int zField)
 {
     FullAdder8 Adder;
     Adder.add(reg->read(0), reg->read(zField));
-    temp.setValue(Adder.getSumADDR());
+    temp->setValue(Adder.getSumADDR());
     return Adder.getSumADDR();
 }
 
@@ -25,7 +25,7 @@ uint8_t ALU::executeSUP(unsigned int zField, uint16_t HL)
 {
     FullSubtractor8 Sub;
     Sub.sub(reg->read(0), reg->read(zField));
-    temp.setValue(Sub.getSumSUP());
+    temp->setValue(Sub.getSumSUP());
     return Sub.getSumSUP();
 }
 

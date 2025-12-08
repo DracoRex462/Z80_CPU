@@ -15,12 +15,12 @@ public:
 
     Register* reg;
     Memory* mem;
-    Temp temp;
+    Temp* temp;
 
 private:
     uint8_t  executeADD(unsigned int zField, uint16_t HL);
     uint8_t  executeSUP(unsigned int zField, uint16_t HL);
-    void executeLD(int yField, int zField, uint16_t HL);
+    void     executeLD(int yField, int zField, uint16_t HL);
 };
 
 #endif
