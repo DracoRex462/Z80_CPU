@@ -10,6 +10,7 @@ void ControlUnit::decode_and_execute()
         decodeOpcode(IR[counter->getCounter()]);
         alu.execute(op, yField, zField, HL);
         if (op != 1) { executeLDReg(); }
+        counter->setCounter(counter->getCounter() + 1);
     }
 }
 
@@ -29,7 +30,7 @@ void ControlUnit::decodeOpcode(uint8_t command, uint8_t H, uint8_t L)
 
 }
 
-void ControlUnit::executeLDReg()
+void ControlUnit::executeAluToA()
 {
     reg->write(0, temp->getValue());
 }

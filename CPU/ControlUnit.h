@@ -22,7 +22,7 @@ public:
 private:
     std::vector<uint8_t> IR;
     void decodeOpcode(uint8_t command);
-    void executeLDReg();
+    void executeAluToA();
 
     unsigned int op;
     unsigned int xField;
