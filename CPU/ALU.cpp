@@ -7,7 +7,7 @@
 
 // ----------------------------------------------------------------------------------
 
-void ALU::execute(int op, int yField, int zField, uint16_t HL)
+void ALU::execute(unsigned int op, unsigned int yField, unsigned int zField, uint16_t HL)
 {
     switch(op)
     {
@@ -16,8 +16,7 @@ void ALU::execute(int op, int yField, int zField, uint16_t HL)
         case 3:          executeSUP(yField, HL);    break;      // SUP
     }
 }
-
-unsigned int ALU::executeADD(unsigned int yField, uint16_t HL)
+uint8_t ALU::executeADD(unsigned int zField, uint16_t HL)
 {
     Register reg;
     Memory mem;
@@ -28,7 +27,7 @@ unsigned int ALU::executeADD(unsigned int yField, uint16_t HL)
     return Adder.getSumADDR();
 }
 
-unsigned int ALU::executeSUP(unsigned int yField, uint16_t HL)
+uint8_t ALU::executeSUP(unsigned int zField, uint16_t HL)
 {
     Register reg;
     Memory mem;
