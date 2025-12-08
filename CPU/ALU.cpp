@@ -45,37 +45,34 @@ unsigned int ALU::executeADD(unsigned int yField, uint16_t HL)
     return Adder.getSumADDR();
 }
 
-unsigned int ALU::executeSUP(unsigned int yField, uint16_t HL)
+unsigned int ALU::executeSUP(unsigned int zField, uint16_t HL)
 {
-    Register R;
-    FullSubtractor8 Subtractor;
+    Register reg;
+    Memory mem;
+    FullSubtractor8 Sub;
 
-    switch(controlYField(yField))
-    {
-        case 0: Subtractor.sub(R.read(0), yField); break;
-        case 1: Subtractor.sub(R.read(0), HL); break;
-        case 2: Subtractor.sub(R.read(0), R.read(0)); break;
-    }
-    return Subtractor.getSumSUP();
+    if (zField == 6)    { Sub.sub(reg.read(0), mem.read(HL)); }
+    else                { Sub.sub(reg.read(0), reg.read(zField)); }
+    return Sub.getSumSUP();
 }
 
-
 // ----------------------------------------------------------------------------------------------------
-
+/*
 void ALU::createFields(uint8_t command)
 {
     xField = (command >> 6) & 0x03;
     yField = (command >> 3) & 0x07;
     zField = command & 0x07;
 }
+*/
 
-void ALU::executeLD(uint8_t command, uint16_t HL)
+void ALU::executeLD(int yField, int zField, uint16_t HL)
 {
     Register reg;
     Memory mem;
 
     if (yField != 6 && zField != 6)         { reg.write(reg.read(zField), reg.read(yField)); }  // R <- R
     else if (yField != 6 && zField == 6)    { reg.write(reg.read(zField), HL); }                // R <- HL
-    else if (yField == 6 && zField != 6)    { mem.write(HL, reg.read(yField));}                 // HL <- R
-    else if (yField == 6 && zField == 6)    { mem.write(HL, HL); }                              // HL <- HL
+    else if (yField == 6 && zField != 6)    { mem.write(HL, reg.read(yField));}                      // HL <- R
+    else if (yField == 6 && zField == 6)    { mem.write(HL, HL); }                                        // HL <- HL
 }
