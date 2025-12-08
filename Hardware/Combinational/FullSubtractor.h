@@ -1,7 +1,6 @@
 #ifndef SUBTRACTOR_H
 #define SUBTRACTOR_H
 
-
 class FullSubtractor {
 public:
     FullSubtractor() : OutputC(0), OutputS(0) {};

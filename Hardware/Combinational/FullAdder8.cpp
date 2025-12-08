@@ -1,7 +1,8 @@
-    #include "FullAdder8.h"
-    #include "FullAdder.h"
-    #include <vector>
-    #include <cstdint>
+#include "FullAdder8.h"
+#include "FullAdder.h"
+
+#include <vector>
+#include <cstdint>
 
 void FullAdder8::add(uint8_t input1, uint8_t input2)
 {
@@ -22,16 +23,16 @@ void FullAdder8::add(uint8_t input1, uint8_t input2)
 }
 
 unsigned int FullAdder8::getSumADDR()
-    {
-        unsigned int result = 0;
+{
+    unsigned int result = 0;
 
-        for (int i = 7; i >= 0; --i)
-        {
-            if (!SVector[i].empty())
-                result = (result << 1) | SVector[i].back();
-        }
-        return result;
+    for (int i = 7; i >= 0; --i)
+    {
+        if (!SVector[i].empty())
+            result = (result << 1) | SVector[i].back();
     }
+    return result;
+}
 
 
 
