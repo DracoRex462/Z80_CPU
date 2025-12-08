@@ -1,29 +1,33 @@
 #include "ControlUnit.h"
-#include "CPU/ALU.h"
-#include "PC.h"
-#include "../Hardware/Logic/OR.h"
-
 #include <cstdint>
 
 void ControlUnit::decode_and_execute()
 {
-    ALU alu;
-
     for (int i = 0; i < IR.size(); i++)
     {
-        unsigned int xField = (IR[i] & 0b00001111);
-        unsigned int yField = (IR[i] & 0b11110000) >> 4;
-        if (yField == 6) { HL = createHL((IR[i + 1] & 0b11110000) >> 4, IR[i + 1] & 0b00001111); }
-        else { HL = 0x0000; }
-
-        alu.execute(xField, yField, HL);
+        decodeOpcode(IR[counter->getCounter()]);
+        alu.execute(op, yField, zField, HL);
+        if (op != 1) { executeLDReg(); }
+        counter->setCounter(counter->getCounter() + 1);
     }
 }
 
-uint16_t ControlUnit::createHL(uint8_t Ci1, uint8_t Ci2)
+void ControlUnit::decodeOpcode(uint8_t command, uint8_t H, uint8_t L)
 {
-    PC Counter;
-    OR Or;
-    Counter.setCounter(Counter.getCounter() + 2);
-    return Ci1 << 8 | Ci2;
+    xField = (command >> 6) & 0x03;
+    yField = (command >> 3) & 0x07;
+    zField = command & 0x07;
+    HL = static_cast<uint16_t>(H) << 8 | L;
+
+    switch (xField)
+    {
+        case 0x4 ... 0x7:   op = 1;
+        case 0x7:           op = 2;
+        case 0x8:           op = 3;
+    }
+}
+
+void ControlUnit::executeAluToA()
+{
+    reg->write(0, temp->getValue());
 }
