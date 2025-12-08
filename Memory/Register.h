@@ -14,5 +14,4 @@ private:
     std::vector<uint8_t> data[7];
 };
 
-
 #endif

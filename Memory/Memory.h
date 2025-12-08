@@ -5,11 +5,11 @@
 
 class Memory {
     public:
-        void write(unsigned int addr, unsigned int value) { data[addr].push_back(value); };
-        std::vector<unsigned int>& read(unsigned int addr) { return data[addr]; }
+        void write(uint8_t addr, uint8_t value) { data[addr].push_back(value); };
+        std::vector<uint8_t>& read(uint8_t addr) { return data[addr]; }
 
     private:
-        std::vector<unsigned int> data[64000];
+        std::vector<uint8_t> data[64000];
 };
 
 #endif
