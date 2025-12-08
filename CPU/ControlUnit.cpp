@@ -1,14 +1,13 @@
 #include "ControlUnit.h"
-#include "CPU/ALU.h"
-#include "PC.h"
+
 
 #include <cstdint>
 
 void ControlUnit::decode_and_execute()
 {
-    ALU alu;
     for (int i = 0; i < IR.size(); i++)
     {
+        decodeOpcode(IR[Counter->getCounter()]);
         alu.execute(op, yField, zField, HL);
         if (op != 1) { executeLDReg(); }
     }
