@@ -20,7 +20,7 @@ public:
 private:
     uint8_t  executeADD(unsigned int zField, uint16_t HL);
     uint8_t  executeSUP(unsigned int zField, uint16_t HL);
-    unsigned int executeLD(int yField, int zField, uint16_t HL);
+    void executeLD(int yField, int zField, uint16_t HL);
 };
 
 #endif
