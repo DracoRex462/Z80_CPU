@@ -1,13 +1,13 @@
 #ifndef CONTROLUNIT_H
 #define CONTROLUNIT_H
 
-#include <cstdint>
-#include <vector>
-
 #include "PC.h"
 #include "ALU.h"
 #include "Temp.h"
 #include "../Memory/Register.h"
+
+#include <cstdint>
+#include <vector>
 
 class ControlUnit {
 public:

@@ -1,11 +1,10 @@
 #ifndef ALU_H
 #define ALU_H
 
-#include <cstdint>
-
 #include "Temp.h"
 #include "../Memory/Register.h"
 #include "../Memory/Memory.h"
+#include <cstdint>
 
 class ALU
 {

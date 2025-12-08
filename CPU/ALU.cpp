@@ -1,5 +1,4 @@
 #include "ALU.h"
-
 #include "../Hardware/Combinational/FullAdder8.h"
 #include "../Hardware/Combinational/FullSubtractor8.h"
 

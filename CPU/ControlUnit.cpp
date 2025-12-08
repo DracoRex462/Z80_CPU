@@ -1,6 +1,4 @@
 #include "ControlUnit.h"
-
-
 #include <cstdint>
 
 void ControlUnit::decode_and_execute()
@@ -27,7 +25,6 @@ void ControlUnit::decodeOpcode(uint8_t command, uint8_t H, uint8_t L)
         case 0x7:           op = 2;
         case 0x8:           op = 3;
     }
-
 }
 
 void ControlUnit::executeAluToA()
