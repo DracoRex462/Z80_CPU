@@ -18,5 +18,4 @@ private:
     std::vector<uint8_t> IR;
 };
 
-
 #endif
