@@ -22,10 +22,9 @@ int Z80::ApproveVector()
     return false;
 };
 
-
 void Z80::PrintRegister() {
-    //Register R;
+    Register R;
     std::cout << "Start" << std::endl;
-    //for (int i = 0; i < 7; ++i)
-    //    std::cout << "Register " << i << ": " << R.read(i) << std::endl;
+    for (int i = 0; i < 7; ++i)
+        std::cout << "Register " << i << ": " << R.read(i) << std::endl;
 };
