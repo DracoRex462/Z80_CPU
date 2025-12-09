@@ -7,11 +7,11 @@ class IX
 {
 public:
     IX() : addr(0) {};
-    void write(int8_t address) { addr = address; };
-    int8_t read() { return addr; };
+    void write(int16_t address) { addr = address; };
+    int16_t read() { return addr; };
 
 private:
-    int8_t addr;
+    int16_t addr;
 };
 
 #endif
