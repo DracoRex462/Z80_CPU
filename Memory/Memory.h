@@ -1,15 +1,15 @@
 #ifndef MEMORY_H
 #define MEMORY_H
 
-#include <vector>
+#include <cstdint>
 
 class Memory {
     public:
-        void write(unsigned int addr, unsigned int value) { data[addr].push_back(value); };
-        std::vector<unsigned int>& read(unsigned int addr) { return data[addr]; }
+        void write(uint16_t addr, uint8_t value) { data[addr] = value; }
+        uint8_t read(uint16_t addr) const { return data[addr]; }
 
     private:
-        std::vector<unsigned int> data[64000];
+        uint8_t data[65536] = {};
 };
 
 #endif

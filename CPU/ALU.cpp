@@ -1,66 +1,40 @@
 #include "ALU.h"
-#include "PC.h"
-#include "../Memory/Register.h"
-#include "../Memory/Memory.h"
-
 #include "../Hardware/Combinational/FullAdder8.h"
 #include "../Hardware/Combinational/FullSubtractor8.h"
 
-
-void ALU::execute(unsigned int xField, unsigned int yField, uint16_t HL)
+void ALU::execute(unsigned int op, unsigned int yField, unsigned int zField, uint16_t HL)
 {
-    switch(xField)
+    switch(op)
     {
-        case 0x9: loadA(executeSUP(yField, HL));  break; //SUP
-        case 0x8: loadA(executeADD(yField, HL));  break; //ADD
-        case 0x7: executeLD(yField, HL); break; //LD
+        case 1:          executeLD(yField, zField, HL);     break;      // LD
+        case 2:          executeADD(zField);                break;      // ADD
+        case 3:          executeSUP(zField);                break;      // SUP
     }
 }
 
-
-
-int ALU::controlYField(unsigned int yField)
+uint8_t ALU::executeADD(unsigned int zField)
 {
-    return (yField <= 5) ? 0 : (yField == 6 ? 1 : 2);
-}
-
-void ALU::loadA(unsigned int value)
-{
-    Register R;
-    R.write(0, value);
-};
-
-unsigned int ALU::executeADD(unsigned int yField, uint16_t HL)
-{
-    Register R;
     FullAdder8 Adder;
-
-    switch(controlYField(yField))
-    {
-        case 0: Adder.add(R.read(0), yField); break;
-        case 1: Adder.add(R.read(0), HL); break;
-        case 2: Adder.add(R.read(0), R.read(0)); break;
-    }
+    Adder.add(reg->read(0), reg->read(zField));
+    temp->setValue(Adder.getSumADDR());
     return Adder.getSumADDR();
 }
 
-unsigned int ALU::executeSUP(unsigned int yField, uint16_t HL)
+uint8_t ALU::executeSUP(unsigned int zField, uint16_t HL)
 {
-    Register R;
-    FullSubtractor8 Subtractor;
-
-    switch(controlYField(yField))
-    {
-        case 0: Subtractor.sub(R.read(0), yField); break;
-        case 1: Subtractor.sub(R.read(0), HL); break;
-        case 2: Subtractor.sub(R.read(0), R.read(0)); break;
-    }
-    return Subtractor.getSumSUP();
+    FullSubtractor8 Sub;
+    Sub.sub(reg->read(0), reg->read(zField));
+    temp->setValue(Sub.getSumSUP());
+    return Sub.getSumSUP();
 }
 
-unsigned int ALU::executeLD(unsigned int yField, uint16_t HL)
+void ALU::executeLD(int yField, int zField, uint16_t HL)
 {
-    Register R;
-    Memory M;
-    M.write(HL, R.read(yField));
+    Register reg;
+    Memory mem;
+
+    if (yField != 6 && zField != 6)         { reg.write(reg.read(zField), reg.read(yField)); }  // R <- R
+    else if (yField != 6 && zField == 6)    { reg.write(reg.read(zField), HL); }                // R <- HL
+    else if (yField == 6 && zField != 6)    { mem.write(HL, reg.read(yField));}                      // HL <- R
+    else if (yField == 6 && zField == 6)    { mem.write(HL, HL); }                                        // HL <- HL
 }

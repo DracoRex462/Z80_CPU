@@ -3,11 +3,11 @@
 
 class Temp {
 public:
-    void setValue(unsigned int data) { value = data; };
-    unsigned int getValue() { return value; };
+    void setValue(uint8_t data) { value = data; };
+    uint8_t getValue() { return value; };
 
 private:
-    unsigned int value;
+    uint8_t value;
 };
 
 #endif
